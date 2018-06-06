@@ -61,7 +61,6 @@ mainList = {
 
     while (items === "" || items === null || typeof(items) !== 'string') {
       items = prompt("Перечислите через запятую товары", "");
-      // console.log(typeof(items));
     }
     
     mainList.shopItems = items.split(",");
@@ -75,12 +74,14 @@ mainList = {
 
     // mainList.shopItems.push(prompt("Подождите, еще ", ""));
     mainList.shopItems.sort();
+    document.write("У нас вы можете купить: "); 
     mainList.shopItems.forEach(function(item,i) {
       // alert(i + ": " + item + "(массив: " + arr + ")")
-      document.writeln("У нас вы можете купить: " + (i + 1) + " " + item + "<br>");
+      document.writeln((i + 1) + ") " + item + "; ");
     });
+    console.log("Наш магазин включает в себя: ");
     for( let key in mainList.shopItems) {
-      console.log("Наш магазин включает в себя: " + key + " . " + mainList.shopItems[key]);
+      console.log(key + " . " + mainList.shopItems[key]);
     }    
   }
 };
