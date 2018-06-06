@@ -54,27 +54,38 @@ mainList = {
   chooseShopItems: function chooseShopItems() {
     let items = prompt("Перечислите через запятую товары", "");
 
-    if (parseInt(items)) {
-      console.log(items);
-      console.log(typeof(items));
-    }
-
-    // while (items === "" || items === null) {
-    //   items = prompt("Перечислите через запятую товары", "");
+    // if (parseInt(items)) {
+    //   console.log(items);
     //   console.log(typeof(items));
     // }
-    // mainList.shopItems = items.split(",");
+
+    while (items === "" || items === null || typeof(items) !== 'string') {
+      items = prompt("Перечислите через запятую товары", "");
+      // console.log(typeof(items));
+    }
+    
+    mainList.shopItems = items.split(",");
+    
+    let items1 = prompt("Подождите, еще ", "");
+
+    while (items1 === "" || items1 === null || typeof(items1) !== 'string') {
+      items1 = prompt("Подождите, еще ", "");
+    }
+    mainList.shopItems.push(items1);
+
     // mainList.shopItems.push(prompt("Подождите, еще ", ""));
-    // mainList.shopItems.sort();
-    // mainList.shopItems.forEach(function(item,i) {
-    //   // alert(i + ": " + item + "(массив: " + arr + ")")
-    //   document.writeln("У нас вы можете купить: " + (i + 1) + " " + item + "<br>");
-    // });
-    // for( let key in mainList.shopItems) {
-    //   console.log("Наш магазин включает в себя: " + key + " . " + mainList.shopItems[key]);
-    // }    
+    mainList.shopItems.sort();
+    mainList.shopItems.forEach(function(item,i) {
+      // alert(i + ": " + item + "(массив: " + arr + ")")
+      document.writeln("У нас вы можете купить: " + (i + 1) + " " + item + "<br>");
+    });
+    for( let key in mainList.shopItems) {
+      console.log("Наш магазин включает в себя: " + key + " . " + mainList.shopItems[key]);
+    }    
   }
 };
+
+mainList.chooseShopItems();
 
 
 
