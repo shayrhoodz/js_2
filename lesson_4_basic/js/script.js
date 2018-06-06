@@ -88,7 +88,7 @@ mainList = {
 
 mainList.chooseShopItems();
 
-
+ 
 
 function start() {
   mainList.budget = +prompt("Ваш бюджет за месяц?", '');
