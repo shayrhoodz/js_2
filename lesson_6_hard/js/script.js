@@ -95,7 +95,12 @@ function refresh() {
 		} else {
 				// console.log("не заполнен хоть один");
 			};
-		
+		if (!/^[a-zA-Z0-9 ,.\-:"()]*?$/.test(hire_employers_item[i].value)) {
+			// console.log("истинно");
+		} else {
+				// console.log("ложно");
+				hire_employers_item[i].value = '';
+			};
 		
 	};
 	
