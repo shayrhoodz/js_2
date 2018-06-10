@@ -89,11 +89,17 @@ function refresh() {
 	};
 
 	for (let i = 0; i < hire_employers_item.length; i++) {
-		if (hire_employers_item[i].value != "" && mainList.open) {
+		if (hire_employers_item[i].value != "" && mainList.open && isNaN(hire_employers_item[i].value)) {
 			// console.log("заполнен хоть один");
 			employers_btn.removeAttribute("disabled");
 		} else {
 				// console.log("не заполнен хоть один");
+			};
+		if (!/^[0-9 ,.\-:"()]*?$/.test(hire_employers_item[i].value)) {
+			// console.log("истинно");
+		} else {
+				// console.log("ложно");
+				hire_employers_item[i].value = '';
 			};
 		
 		
