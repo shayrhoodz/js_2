@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  background-color: green;
+}
+
+.get-time {
+  /* text-align: center; */
+  margin-top: 5%;
+  font-size: 40px;
+  color: brown;
+  position: relative;
+}
+
+.get-time::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  bottom: 0;
+  left: 0;
+}
