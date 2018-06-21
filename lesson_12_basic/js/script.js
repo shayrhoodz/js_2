@@ -362,15 +362,34 @@ window.addEventListener('DOMContentLoaded', () => {
             if (restDays.value == '' || persons.value == '') {
               totalValue.innerHTML = 0
             } else {
-              totalValue.innerHTML = total;
-            }
-
-            if (daysSum == '' || personsSum == /[^\d]/g) {
-              restDays.value = '';
-              // console.log('пустой или не тот символ'); 
-            }
+                totalValue.innerHTML = total;
+              }         
 
           });
+
+          // restDays.onkeyup = numberTst;
+
+          // function numberTst() {
+          //   console.log('проверка ' + restDays.value);
+
+          //   restDays.value = restDays.value.replace(/[^\d]/g, '')
+
+          //   // if (restDays.value == /[^\d]/g) {
+          //   //   restDays.value = '';
+          //   // };
+
+          // };
+
+          persons.addEventListener('keyup', () => {
+            console.log('проверка ' + persons.value);
+            persons.value = persons.value.replace(/[^\d]/g, '')
+          });
+          
+          restDays.addEventListener('keyup', () => {
+            console.log('проверка ' + restDays.value);
+            restDays.value = restDays.value.replace(/[^\d]/g, '')
+          });
+
 
           place.addEventListener('change', function () {
             if (restDays.value == '' || persons.value == '') {
