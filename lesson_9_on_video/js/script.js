@@ -1,9 +1,12 @@
-let btn = document.getElementsByTagName('button')[0];
 
 
-btn.addEventListener('click', () => {
-  console.log(this); // получим window
-});
+
+// let btn = document.getElementsByTagName('button')[0];
+
+
+// btn.addEventListener('click', () => {
+//   console.log(this); // получим window
+// });
 // btn.addEventListener('click', function () {
 //   // console.log(this); // получим сам объект
 //   this.style.backgroundColor = 'red';
