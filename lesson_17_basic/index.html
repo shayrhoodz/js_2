@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    /* .galleria{ max-width: 700px; height: 400px; background: #000 } */
+  
+    .tabs__content {
+      display: none; /* по умолчанию прячем все блоки */
+    }
+    .tabs__content.active {
+      display: block; /* по умолчанию показываем нужный блок */
+    }
+
+  
+  </style>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Урок 17 ШРН</title>
+</head>
+<body>
+  <div class="progress-top"></div>
+  <div class="progress-right"></div>
+  <div class="progress-bottom"></div>
+  <div class="progress-left"></div>
+
+  <div class="tabs">
+
+    <ul class="tabs__caption">
+      <li class="active">1-я вкладка</li>
+      <li>2-я вкладка</li>
+      <li>3-я вкладка</li>
+    </ul>
+  
+    <div class="tabs__content active">
+      Содержимое первого блока
+      <div class="galleria">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+      </div>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="galleria/galleria-1.5.7.min.js"></script>
+      <script>
+      (function() { 
+          Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+          Galleria.configure({
+            transition: 'slide',
+            imageCrop: true,
+            height: 500,
+            width: 700,
+            autoplay: 3000,
+            lightbox: true
+          });
+          Galleria.run('.galleria');
+            
+      }());
+      </script> 
+
+      <script>
+        (function($) {
+        $(function() {
+
+          $('ul.tabs__caption').on('click', 'li:not(.active)', function() {
+            $(this)
+              .addClass('active').siblings().removeClass('active')
+              .closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(this).index()).addClass('active');
+          });
+
+        });
+        })(jQuery);  
+      </script>
+    </div>
+  
+    <div class="tabs__content">
+      Содержимое второго блока
+      <div class="container">  
+        <div class="view">0</div>
+      </div>
+    </div>
+
+    <div class="tabs__content">
+        Содержимое третьего блока
+
+        <svg class="filter" version="1.1">
+        <defs>
+          <filter id="gooeyness">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="gooey" />
+            <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+      <div class="radios-boxes">
+        <div class="radios">
+          <input type="radio" name="radio" id="radio1" class="radio" value="r">
+          <input type="radio" name="radio" id="radio2" class="radio" value="k">
+          <input type="radio" name="radio" id="radio3" class="radio" value="t">
+          <input type="radio" name="radio" id="radio4" class="radio" value="s">
+          <div class="ball"></div>
+        </div>
+        <div class="labels">
+          <label for="radio1" class="label">radio</label>
+          <label for="radio2" class="label">killed</label>
+          <label for="radio3" class="label">the video</label>
+          <label for="radio4" class="label">star</label>
+        </div>
+      </div>
+
+    </div>
+  
+  </div><!-- .tabs-->
+
+  <script type="text/javascript">
+  
+    let radios = document.querySelectorAll('.radio');
+    let labels = document.querySelectorAll('.label');
+    let ball = document.querySelector('.ball');
+    let prevRadio, prevLabel;
+    radios.forEach((radio, index) => {
+      radio.addEventListener('click', function(e) {
+        if (prevRadio) prevRadio.classList.toggle('active');
+        if (prevLabel) prevLabel.classList.toggle('active');
+        radio.classList.toggle('active');
+        prevRadio = radio;
+        labels[index].classList.toggle('active');
+        prevLabel = labels[index];
+        ball.className = `ball pos${index}`;
+      });
+    });
+  
+  
+  </script>
+
+
+  <script type="text/javascript">
+  
+    (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+    "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ButtonsList=["7;8;9;/[;C[","4;5;6;*[;<[","1;2;3;+[;=|[","0;00;.;-["];
+    },{}],2:[function(require,module,exports){
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function create(tagName, clasName, childs = []) {
+        let elem = document.createElement(tagName);
+        elem.className = clasName;
+        return elem;
+    }
+    exports.create = create;
+    },{}],3:[function(require,module,exports){
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    const buttons_1 = require("./lib/buttons");
+    const element_1 = require("./lib/element");
+    class Calc {
+        static get variable() {
+            let i = parseInt(this._v);
+            if (!isNaN(i) && i === 0)
+                this._v = '';
+            return this._v;
+        }
+        static set variable(v) {
+            if (!v.length)
+                v = '0';
+            this._v = v;
+            this.view.innerHTML = v;
+        }
+        static init() {
+            let keyboard = element_1.create('table', 'keyboard');
+            let keyOn = (v) => {
+                return () => {
+                    let vs = this.variable;
+                    if (/[0-9]/.test(v))
+                        this.variable += v;
+                    if (/[\.\-\/\*\+]/.test(v) && !/[\.\-\/\*\+]/.test(vs[vs.length - 1]))
+                        this.variable += v;
+                    if (v === '=')
+                        this.variable = eval(this.variable).toString();
+                    if (v === 'C') {
+                        this.hystory = [];
+                        this.variable = '';
+                    }
+                    if (v === '<') {
+                        try {
+                            this.variable = this.hystory.pop();
+                        }
+                        catch (e) {
+                            this.variable = '';
+                        }
+                    }
+                    else if (vs !== this.variable)
+                        this.hystory.push(vs);
+                };
+            };
+            window.addEventListener('keydown', (e) => {
+                let v = e.key;
+                if (v === 'Enter')
+                    v = '=';
+                if (v === 'Backspace')
+                    v = '<';
+                if (v === 'Escape')
+                    v = 'C';
+                keyOn(v)();
+            });
+            for (let keyString of buttons_1.ButtonsList) {
+                let tr = element_1.create('tr', 'keyboard-row');
+                let buttons = keyString.split(';');
+                for (let button of buttons) {
+                    let td = element_1.create('td', 'keyboard-key');
+                    let v = td.innerText = button.replace(/[\[\|]/g, '');
+                    td.onclick = keyOn(v);
+                    if (button.indexOf('|') !== -1)
+                        td.setAttribute('rowspan', '2');
+                    if (button.indexOf('[') !== -1)
+                        td.classList.add('soft');
+                    tr.appendChild(td);
+                }
+                keyboard.appendChild(tr);
+            }
+            document.querySelector('.container').appendChild(keyboard);
+        }
+    }
+    Calc.view = document.querySelector('.view');
+    Calc._v = '0';
+    Calc.hystory = [];
+    Calc.init();
+    },{"./lib/buttons":1,"./lib/element":2}]},{},[3])
+
+
+    
+  </script>
+  
+ 
+
+
+  <script type="text/javascript">
+
+    // Progress Scroll
+    const ProgressScroll = (() => {
+      let s;
+
+      return {
+        settings() {
+          return {
+            top: $('.progress-top'),
+            right: $('.progress-right'),
+            bottom: $('.progress-bottom'),
+            left: $('.progress-left'),
+            windowHeight: $(window).height(),
+            windowWidth: $(window).width(),
+            scrollHeight: $(document).height() - $(window).height(),
+            progressTotal: $(window).height() * 2 + $(window).width() * 2,
+            scrollPosition: $(document).scrollTop()
+          };
+        },
+
+        init() {
+          s = this.settings();
+          this.bindEvents();
+        },
+
+        bindEvents() {
+          $(window).on('scroll', this.onScroll);
+          $(window).on('resize', this.onResize);
+
+          this.progress();
+        },
+
+        onScroll() {
+          s.scrollPosition = $(document).scrollTop();
+
+          ProgressScroll.requestTick();
+        },
+
+        onResize() {
+          s.windowHeight = $(window).height();
+          s.windowWidth = $(window).width();
+          s.scrollHeight = $(document).height() - s.windowHeight;
+          s.progressTotal = s.windowHeight * 2 + s.windowWidth * 2;
+
+          ProgressScroll.requestTick();
+        },
+
+        requestTick() {
+          requestAnimationFrame(this.progress);
+        },
+
+        progress() {
+          const percentage = s.scrollPosition / s.scrollHeight;
+          const width = s.windowWidth / s.progressTotal;
+          const height = s.windowHeight / s.progressTotal;
+
+          s.top.css('width', `${(percentage / width) * 100}%`);
+          s.right.css('height', `${((percentage - width) / height) * 100}%`);
+          s.bottom.css('width', `${((percentage - width - height) / width) * 100}%`);
+          s.left.css('height', `${((percentage - width - height - width) / height) * 100}%`);
+        }
+      };
+    })();
+
+    // Init
+    $(() => {
+      ProgressScroll.init();
+    });
+
+  </script>
+  
+  
+  // <link rel="stylesheet" href="./css/style.css">
+  // <script src="./js/script.js"></script>
+  
+</body>
+</html>
