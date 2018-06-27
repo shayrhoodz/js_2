@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
 
+  
 
   let tab = require('../parts/tab.js');
   let modal = require('../parts/modal.js');
