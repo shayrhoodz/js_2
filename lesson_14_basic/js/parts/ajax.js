@@ -42,10 +42,11 @@ function ajax() {
               }
             }
         }
-        for (let i = 0; i < input.length; i++) {
-          input[i].value = '';
-          // Очищаем поля ввода          
-        }
+        input[0].value = '';
+        // for (let i = 0; i < input.length; i++) {
+        //   input[i].value = '';
+        //   // Очищаем поля ввода          
+        // }
       });
 
 
