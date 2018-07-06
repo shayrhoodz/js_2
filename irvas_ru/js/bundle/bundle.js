@@ -65,7 +65,7 @@
 
       // console.log(mainForm);
       // console.log(popupForm);
-      console.log(popupFormCalcEnd);
+      // console.log(popupFormCalcEnd);
 
       // function getChar(event) {
       //   if (event.which == null) {
@@ -100,27 +100,27 @@
         // };
         // console.log(target.getAttribute('name'));
         // if (target.classList.contains('form_input')) {
-        //   console.log('ввод данных');
+          // console.log('ввод данных');
         // }
 
 
         // if (target.getAttribute('name') == 'user_phone') {
-        //   console.log('равен юзерфоне');
+          // console.log('равен юзерфоне');
         //   let chr = getChar(e);
         //   // if (typeof(chr) == 'number') {
-        //   //   console.log('цифра');
+            // console.log('цифра');
         //   // }
         //   if (parseInt(chr)) {
-        //     console.log('число');
+            // console.log('число');
         //   } else {
         //       let tst = target.value.substring(0, target.value.length - 1);
-        //       console.log('символ' + tst);
+              // console.log('символ' + tst);
         //       target.value = '';
         //       // target.value.slice(-1);
         //       target.value = tst;
 
         //     }
-        //   console.log(chr + ' ' + typeof(chr));
+          // console.log(chr + ' ' + typeof(chr));
         // }
       });
 
@@ -169,15 +169,15 @@
         request.onreadystatechange = function () {
           if (request.readyState < 4) {
             statusMessage.innerHTML = message.loading;
-            console.log('загрузка');
+            // console.log('загрузка');
           } else if (request.readyState === 4) {
             if (request.status == 200 && request.status < 300) {
               statusMessage.innerHTML = message.success;
               // Добавляем контент на страницу
-              console.log('успешно');
+              // console.log('успешно');
             } else {
               statusMessage.innerHTML = message.failure;
-              console.log('ошибка');
+              // console.log('ошибка');
             }
           }
         };
@@ -260,7 +260,7 @@
 
         var formData = new FormData(data);
 
-        console.log(formData);
+        // console.log(formData);
 
         request.send(formData);
 
@@ -277,18 +277,18 @@
 
       select.addEventListener('change', function () {
         data.type = select.value;
-        console.log(data);
+        // console.log(data);
       });
 
       inputWidth.addEventListener('keyup', function () {
         inputWidth.value = inputWidth.value.replace(/[^\d]/g, '');
         data.width = inputWidth.value;
-        console.log(data);
+        // console.log(data);
       });
       inputHeight.addEventListener('keyup', function () {
         inputHeight.value = inputHeight.value.replace(/[^\d]/g, '');
         data.height = inputHeight.value;
-        console.log(data);
+        // console.log(data);
       });
 
       function check(a, b) {
@@ -311,7 +311,7 @@
             data.warm = false;
           };
         }
-        console.log(data);
+        // console.log(data);
       };
       // check();
 
@@ -344,7 +344,7 @@
         // console.log(target);
         for (var i = 0; i < imgMini.length; i++) {
           if (target == imgMini[i]) {
-            console.log('равно ' + imgMini[i].src);
+            // console.log('равно ' + imgMini[i].src);
             for (var t = 0; t < imgMini.length; t++) {
               imgMini[t].style.width = '60px';
             }
@@ -371,7 +371,7 @@
       // img = worksWrap.getElementsByTagName('img');
       img = worksWrap.querySelectorAll('.mini');
 
-      console.log(img);
+      // console.log(img);
 
       // const links = {
       //   link1 : '../../img/our_works/big_img/1.png',
@@ -388,24 +388,24 @@
         var target = e.target;
         // div;
 
-        console.log(target);
+        // console.log(target);
 
         for (var i = 0; i < img.length; i++) {
           if (target == img[i]) {
-            console.log('эта картинка');
+            // console.log('эта картинка');
 
             var div = document.createElement('div'),
                 _img = document.createElement('img');
 
             // img.src = "../../img/our_works/big_img/1.png";
             _img.src = links[i];
-            console.log('номер картинка:' + i);
+            // console.log('номер картинка:' + i);
 
             div.classList.add('black');
             _img.classList.add('bigPic');
 
             if (target.className !== 'bigPic') {
-              console.log('не нажали на картинку');
+              // console.log('не нажали на картинку');
               worksWrap.appendChild(div);
               div.appendChild(_img);
 
@@ -461,23 +461,23 @@
           btnCalc = document.querySelectorAll('.popup_calc_btn');
 
       // console.log(popupClose);
-      console.log(btnPopCalc);
+      // console.log(btnPopCalc);
 
       btnPopCalc.addEventListener('click', function () {
-        console.log(this);
+        // console.log(this);
         modalClose(popCalc);
         modalOpen(popCalcProfile);
       });
 
       btnPopCalcProfile.addEventListener('click', function () {
-        console.log(this);
+        // console.log(this);
         modalClose(popCalcProfile);
         modalOpen(popCalcEnd);
       });
 
       // btnCalc.addEventListener('click', function() {
       //   // modalOpen(popCalc);
-      //   console.log('нажал');
+        // console.log('нажал');
       // })
 
       function modalClose(pop) {
@@ -489,7 +489,7 @@
       }
 
       btnPopEng.addEventListener('click', function () {
-        console.log(this);
+        // console.log(this);
         // popEng.style.display = 'block';
         // popup.style.display = 'block';
         modalOpen(popEng);
